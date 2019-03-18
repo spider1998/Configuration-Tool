@@ -1,0 +1,34 @@
+一、安装
+
+1、安装godep
+go get github.com/kr/godep
+
+2、安装assert
+go get github.com/bmizerany/assert
+
+3、安装nsq
+godep get github.com/bitly/nsq/...
+
+二、使用
+
+使用NSQ总共需要打开5个进程。
+1、启动nsqlookup
+nsqlookupd
+
+2、启动nsqd
+nsqd --lookupd-tcp-address=127.0.0.1:4160
+
+3、客户端写入消息
+curl -d "hello world 1" "http://127.0.0.1:4151/put?topic=test"
+
+4、启动nsq_to_file
+nsq_to_file --topic=test --output-dir=./ --lookupd-http-address=127.0.0.1:4161
+
+5、启动管理服务器
+浏览器访问：http://127.0.0.1:4171/
+
+三、简单启动（go http）
+
+nsqlookupd
+
+nsqd --lookupd-tcp-address=127.0.0.1:4160
