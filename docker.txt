@@ -1,0 +1,31 @@
+一、安装
+
+1、下载并安装docker
+curl -sSL https://get.daocloud.io/docker | sh
+
+2、修改docker镜像地址，官方的镜像库连接太慢，这里转到daocloud镜像库。
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://91c0cc1e.m.daocloud.io
+
+3、启动docker服务，并设置开机启动
+systemctl enable docker.service && service docker start
+
+二、去掉sudo权限
+
+1、查看用户组及成员
+sudo cat /etc/group | grep docker
+
+2、可以添加docker组
+sudo groupadd docker 
+
+3、添加用户到docker组 
+sudo gpasswd -a ${USER} docker 
+
+4、增加读写权限
+sudo chmod a+rw /var/run/docker.sock
+
+5、重启docker
+sudo systemctl restart docker 
+
+三、卸载
+
+sudo apt-get remove docker docker-engine docker.io docker-ce
