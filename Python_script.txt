@@ -1,0 +1,13 @@
+ 1、编写python程序
+ demon:
+    import time
+    fout = open('e:\\1.txt','w')
+    tmp = '%d-%02d-%02d %02d:%02d:%02d \r\n' % time.localtime()[0:6]
+    print tmp
+    fout.write(tmp)
+    fout.close()
+
+ 2、运行中输入gpedit.msc打开组策略编辑器；
+ 3、选择“计算机配置”=>“Windows 设置”=>“脚本”=>“启动”选项；
+ 4、选择脚本(***/***.py)
+ 5、配置脚本最长等待时间，路径为“计算机配置”=>“管理模版”=>“系统”=>“脚本”=>“组策略脚本的最长等待时间”；

@@ -1,0 +1,62 @@
+环境：Ubuntu16.04（系统内存最好大于2G）
+一、安装
+
+1.安装依赖包:
+sudo apt-get install curl openssh-server ca-certificates postfix
+执行后，邮件配置选Internet site
+
+2.信任 GitLab 的 GPG 公钥:
+curl https://packages.gitlab.com/gpg.key 2> /dev/null | sudo apt-key add - &>/dev/null
+
+3.修改root密码：
+sudo passwd root
+
+4.更换镜像：
+su root
+vi /etc/apt/sources.list.d/gitlab-ce.list
+将
+deb https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/ubuntu xenial main
+写入打开的文件
+
+5.安装 gitlab-ce:
+sudo apt-get update
+sudo apt-get install gitlab-ce
+
+6.启动gitlab.：
+sudo gitlab-ctl reconfigure
+
+7.打开 sshd 和 postfix 服务：
+service sshd start
+service postfix start
+
+8.了使 GitLab 社区版的 Web 界面可以通过网络进行访问，我们需要允许 80 端口通过防火墙，
+这个端口是 GitLab 社区版的默认端口。为此需要运行下面的命令
+sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+
+9.判断是否成功运行：
+sudo gitlab-ctl status
+
+10.在浏览器中打开：http://127.0.0.1。设置密码，开始使用
+
+//参考文档：https://www.zybuluo.com/lovemiffy/note/418758
+
+
+二、卸载：
+
+1、停止gitlab
+sudo gitlab-ctl stop
+
+2、查看进程
+ps -e | grep gitlab
+
+3、删除所有包含gitlab的文件及目录
+find / -name gitlab | xargs rm -rf
+
+4、卸载
+sudo apt-get remove gitlab-ee
+
+5、检查还有没有卸载的gitlab相关软件
+$ dpkg --get-selections|grep gitlab
+
+6、再执行
+sudo apt-get --purge remove gitlab-ee
