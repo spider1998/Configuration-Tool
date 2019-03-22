@@ -1,0 +1,28 @@
+1、卸载旧版本
+    sudo rm  -rf /usr/local/go
+    sudo rm -rf /usr/bin/go
+
+2、下载压缩包并解压
+    wget https://dl.google.com/go/go1.10.4.linux-amd64.tar.gz
+    sudo tar -xzf go1.10.4.linux-amd64.tar.gz -C /usr/local
+    sudo ln -s /usr/local/go/bin/ /usr/bin/
+
+3、创建工作目录
+    mkdir -p $HOME/go-workspace/src
+    mkdir -p $HOME/go-workspace/pkg
+    mkdir -p $HOME/go-workspace/bin
+
+4、修改配置文件
+    sudo vim $HOME/.bashrc
+    尾行插入
+        export GOROOT=/usr/local/go #设置为go安装的路径，有些安装包会自动设置默认的goroot
+        export GOPATH=$HOME/go-workspace #默认安装包的路径
+        export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+    按Esc 键，: wq 保存退出。使配置文件生效
+
+5、使配置文件生效
+    source $HOME/.bashrc　　#注：这里不要用sudo执行，sudo无该命令
+
+6、查看是否配置成功
+    go env 
+    go version
