@@ -1,0 +1,14 @@
+1、创建Vultr服务器
+
+2、下载xshell并连接
+
+3、部署SSR服务端
+   wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+   chmod +x shadowsocks-all.sh
+   ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+
+4、安装SSR客户端
+
+5、优化
+
+参考链接：https://segmentfault.com/a/1190000017952445
