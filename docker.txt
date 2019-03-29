@@ -30,3 +30,6 @@ sudo systemctl restart docker 
 
 sudo apt-get remove docker docker-engine docker.io docker-ce
 
+
+command:
+docker exec -ti go-blog_blog_1 bash

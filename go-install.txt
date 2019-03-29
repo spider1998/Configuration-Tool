@@ -26,3 +26,9 @@
 6、查看是否配置成功
     go env 
     go version
+
+
+
+
+
+    <a href="https://s3.amazonaws.com/bitly-downloads/nsq/nsq-1.1.0.darwin-amd64.go1.10.3.tar.gz">nsq-1.1.0.darwin-amd64.go1.10.3.tar.gz</a>

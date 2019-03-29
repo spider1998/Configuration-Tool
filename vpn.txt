@@ -1,0 +1,3 @@
+install docker
+docker pull oddrationale/docker-shadowsocks
+docker run -d -p 12345:12345 oddrationale/docker-shadowsocks -s 0.0.0.0 -p 12345 -k welcome -m aes-256-cfb
