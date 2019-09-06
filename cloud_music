@@ -1,0 +1,13 @@
+安装nodejs(@version>8.12)
+apt install nodejs
+apt all npm
+npm install -g n
+nodejsn latest
+n latest
+n stable
+
+安装并运行
+ git clone git@github.com:Binaryify/NeteaseCloudMusicApi.git
+ cd NeteaseCloudMusicApi
+ npm install
+ node app.js
